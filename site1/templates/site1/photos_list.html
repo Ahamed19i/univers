@@ -1,0 +1,30 @@
+
+
+
+
+{% extends 'base.html' %}
+{% block title %}Galerie de Photos{% endblock %}
+
+{% block extra_head %}
+{% load static %}
+<script src="{% static 'js/photos.js' %}"></script>
+{% endblock %}
+
+{% block content %}
+
+<main class="container">
+    <div class="row">
+        {% for photo in photos %}
+        <div class="col-md-4 mb-4">
+            <div class="card h-100">
+                <img src="{{ photo.image.url }}" class="card-img-top" alt="{{ photo.titre }}">
+                <div class="card-body">
+                    <h5 class="card-title">{{ photo.titre }}</h5>
+                    <p class="card-text">{{ photo.description|truncatewords:20 }}</p>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</main>
+{% endblock %}

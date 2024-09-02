@@ -1,0 +1,16 @@
+
+
+
+{% extends 'base.html' %}
+{% block title %}Supprimer la Note{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <h2>Êtes-vous sûr de vouloir supprimer cette note ?</h2>
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-danger">Supprimer</button>
+        <a href="{% url 'notes_professeur' %}" class="btn btn-secondary">Annuler</a>
+    </form>
+</div>
+{% endblock %}

@@ -1,0 +1,77 @@
+
+
+
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Absences des Étudiants{% endblock %}
+
+{% block extra_head %}
+<style>
+    .absences-table th, .absences-table td {
+        vertical-align: middle;
+        text-align: center;
+    }
+    .absences-table th {
+        background-color: #007bff;
+        color: white;
+    }
+    .absences-table tr:nth-child(even) {
+        background-color: #f2f2f2;
+    }
+    .form-container {
+        margin-top: 20px;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<main>
+    <header class="my-4">
+        <h2 class="text-center">Absences des Étudiants</h2>
+    </header>
+    <div class="table-responsive">
+        <table class="table table-bordered table-hover absences-table">
+            <thead>
+                <tr>
+                    <th class="sortable">Nom</th>
+                    <th class="sortable">Prénom</th>
+                    <th class="sortable">Cours</th>
+                    <th class="sortable">Date</th>
+                    <th>Justifiée</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for absence in absences_list %}
+                <tr>
+                    <td>{{ absence.etudiant.nom }}</td>
+                    <td>{{ absence.etudiant.prenom }}</td>
+                    <td>{{ absence.cours.nom_cours }}</td>
+                    <td>{{ absence.date }}</td>
+                    <td>{{ absence.justifiee|yesno:"Oui,Non" }}</td>
+                    <td>
+                        <form method="post" action="{% url 'modifier_absence' absence.id %}" style="display:inline;">
+                            {% csrf_token %}
+                            <button type="submit" class="btn btn-primary btn-sm">Modifier</button>
+                        </form>
+                        <form method="post" action="{% url 'supprimer_absence' absence.id %}" style="display:inline;">
+                            {% csrf_token %}
+                            <button type="submit" class="btn btn-danger btn-sm">Supprimer</button>
+                        </form>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <div class="form-container">
+        <a href="{% url 'ajouter_absence' %}" class="btn btn-success">Ajouter une Absence</a>
+    </div>
+</main>
+{% endblock %}
+
+{% block extra_js %}
+<script src="{% static 'js/scripts_absences.js' %}"></script>
+{% endblock %}

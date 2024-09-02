@@ -1,0 +1,115 @@
+
+{% load static %}
+<header>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#"><img src="{% static 'images/logo.jpeg' %}" alt="Université Logo"></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item"><a class="nav-link" href="{% url 'accueil' %}">Accueil</a></li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Publications
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="{% url 'actualites_list' %}">Actualités</a>
+                        <a class="dropdown-item" href="{% url 'photos_list' %}">Galeries</a>
+                        <a class="dropdown-item" href="#">Documents récents</a>   
+                        
+                    </div>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown2" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Mon Espace
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown2">
+                        <a class="dropdown-item" href="{% url 'emploi_du_temps' %}">Emploi du temps</a>                       
+                        {% if professeur %}
+                            <a class="dropdown-item" href="{% url 'etudiant_list' %}">Étudiants</a>
+                        {% elif administrateur %}
+                            <a class="dropdown-item" href="{% url 'etudiant_list' %}">Étudiants</a>
+        
+                        {% endif %} 
+
+                        {% if etudiant %}
+                            <a class="dropdown-item" href="{% url 'professeur_list' %}">Professeurs</a> 
+                        {% elif administrateur%}
+                            <a class="dropdown-item" href="{% url 'professeur_list' %}">Professeurs</a>
+                        {% else %}
+                            <a class="dropdown-item" href="#"></a>
+                        {% endif %}
+
+                        {% if etudiant %}
+                            <a class="dropdown-item" href="{% url 'notes_etudiant' %}">Mes Notes</a>
+                        {% elif professeur %}
+                            <a class="dropdown-item" href="{% url 'notes_professeur' %}">Gestion des Notes</a>
+                        {% else %}
+                            <a class="dropdown-item" href="#">Notes</a>
+                        {% endif %}
+
+                        
+                        {% if professeur %}
+                            <a class="dropdown-item" href="{% url 'absences' %}">Gestion absences</a>
+                        {% elif administrateur %}
+                            <a class="dropdown-item" href="{% url 'absences' %}">Gestion absences</a>
+                        {% elif etudiant%}
+                            <a class="dropdown-item" href="{% url 'absences_etudiant' %}">Absences</a>
+                        {% else %}                        
+                            <a class="dropdown-item" href="#"></a>
+                        {% endif %}
+                            
+                    </div>
+                </li>
+                <div>
+                    {% if professeur %}
+                        <li class="nav-item"><a class="nav-link" href="{% url 'cours_list' %}">Gestion cours</a></li>
+                    {% elif administrateur%}
+                        <li class="nav-item"><a class="nav-link" href="{% url 'cours_list' %}">Gestion cours</a></li>
+                    {% else %}  
+                     <li class="nav-item"><a class="nav-link" href="{% url 'cours_list_etudiant' %}">Cours</a></li> 
+                    {% endif %}
+                </div>
+                    
+            </ul>
+
+            <ul class="navbar-nav ml-auto">
+                {% if user.is_authenticated %}
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Bienvenue, {{ user.first_name }} {{ user.last_name }}</a>
+                    </li>
+                    
+                    {% if etudiant %}
+                        <a href="{% url 'notifications' %}">
+                            <i class="fas fa-bell"></i>
+                            {% if user.is_authenticated %}
+                                {% if notifications_non_lues > 0 %}
+                                    <span class="badge">{{ notifications_non_lues }}</span>
+                                {% endif %}
+                            {% endif %}
+                        </a>  
+                    {% else %}
+                        <a href="#"></a>   
+                    {% endif %}
+
+                                               
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'compte_utilisateur' %}">Profil</a>
+                    </li>
+                    <li class="nav-item">
+                        <form method="post" action="{% url 'logout' %}">
+                            {% csrf_token %}
+                            <button type="submit" class="btn btn-link nav-link" style="display: inline; cursor: pointer;">Logout</button>
+                        </form>
+                    </li>
+                {% else %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'login' %}">Login</a>
+                    </li>
+                {% endif %}
+            </ul>
+        </div>
+    </nav>
+</header>

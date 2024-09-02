@@ -1,0 +1,38 @@
+
+
+
+{% extends 'base.html' %}
+
+{% block title %}Détails du professeur{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <header class="my-4">
+        <h2 class="text-center">Détails du professeur {{professeur.prenom}} {{professeur.nom}} </h2>
+    </header>
+    <table class="table table-bordered">
+        <tr>
+            <th>Nom</th>
+            <td>{{ professeur.nom }}</td>
+        </tr>
+        <tr>
+            <th>Prénom</th>
+            <td>{{ professeur.prenom }}</td>
+        </tr>
+        <tr>
+            <th>Email</th>
+            <td>{{ professeur.email }}</td>
+        </tr>
+        <tr>
+            <th>Téléphone</th>
+            <td>{{ professeur.telephone }}</td>
+        </tr>
+        <tr>
+            <th>Département</th>
+            <td>{{ professeur.departement.nom_departement }}</td>
+        </tr>
+    </table>
+    </form>
+    <a href="{% url 'professeur_list' %}" class="btn btn-primary">Retour à la liste</a>
+</div>
+{% endblock %}

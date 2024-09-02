@@ -1,0 +1,55 @@
+
+
+
+{% extends 'base.html' %}
+
+{% block title %}Réclamer Note{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <header class="my-4">
+        <h2 class="text-center">Réclamer une notes</h2>
+    </header>
+    <form method="post">
+        {% csrf_token %}
+        <div class="form-group">
+            <label for="motif"><strong>Motif de la Réclamation :</strong></label>
+            <textarea id="motif" name="motif" class="form-control" rows="4" required></textarea>
+        </div>
+        <button type="submit" class="btn btn-warning">Envoyer Réclamation</button>
+    </form>
+</div>
+{% endblock %}
+
+
+
+
+
+
+
+
+
+{% comment %}
+       
+
+{% extends 'base.html' %}
+
+{% block title %}Réclamer une Note{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <h2 class="text-center">Réclamer la Note pour {{ note.cours.nom_cours }}</h2>
+    <form method="post">
+        {% csrf_token %}
+        <div class="form-group">
+            <label for="motif">Motif de la réclamation :</label>
+            <textarea class="form-control" id="motif" name="motif" rows="4" required></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">Envoyer</button>
+    </form>
+</div>
+{% endblock %}
+
+
+
+{% endcomment %}

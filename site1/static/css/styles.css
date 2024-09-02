@@ -1,0 +1,293 @@
+
+
+/* styles.css */
+
+html, body {
+    height: 100%;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.main-content {
+    flex: 1;
+}
+
+.footer {
+    background-color: #343a40; /* Couleur de fond du pied de page */
+    color: white;
+    text-align: center;
+    padding: 15px 0; /* Hauteur du pied de page */
+    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.3); /* Ombre pour donner un effet de surélévation */
+}
+
+.footer .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
+.footer a {
+    color: #f8f9fa;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.footer a:hover {
+    color: #adb5bd;
+}
+
+
+
+/* styles.css */
+
+/* Global Styles 
+
+
+* {
+    
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #998d8d;
+    color: #333;
+    margin: 0;
+    padding: 0;
+}
+
+/* Navigation Bar 
+
+header {
+    background-color: #e70b0b;
+    color: rgb(13, 13, 13);
+    padding: 25px 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+*/
+
+.navbar-brand img {
+    height: 50px;
+}
+
+
+
+.navbar-nav li {
+    position: inline;
+    margin-right: 15px;
+
+}
+
+
+
+.nav-link {
+    color:brgb(20, 19, 19)!important;
+    font-weight: bold;
+
+    display: flex;
+    justify-content: flex-end;
+    flex-grow: 1;
+
+  
+}
+
+.nav-link:hover {
+    color: #090101 !important;
+}
+
+.dropdown-menu {
+    background-color: blue ;
+    border: none;
+}
+
+.dropdown-item {
+    color: white;
+}
+
+.dropdown-item:hover {
+    background-color: #ffcccb;
+    color: white;
+}
+
+
+
+
+
+
+
+
+/* Jumbotron */
+.jumbotron {
+    background-color: #e9ecef;
+    padding: 2rem 1rem;
+    border-radius: 0.3rem;
+}
+
+.jumbotron h1 {
+    font-size: 3.5rem;
+    font-weight: bold;
+}
+
+.jumbotron p.lead {
+    font-size: 1.25rem;
+    font-weight: 300;
+}
+
+.btn-primary {
+    background-color: red;
+    border-color: red;
+}
+
+.btn-primary:hover {
+    background-color: #ffcccb;
+    border-color: #ffcccb;
+}
+
+/* Utility classes */
+.text-center {
+    text-align: center;
+}
+
+
+
+
+/* STYLE POUR LE BUTTON TELECHARGER */
+
+
+.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 16px;
+    color: white;
+    background-color: #007bff;
+    border: none;
+    border-radius: 5px;
+    text-decoration: none;
+    text-align: center;
+    cursor: pointer;
+}
+
+.btn:hover {
+    background-color: #0056b3;
+}
+
+
+
+
+
+
+
+h1 {
+    text-align: center;
+    color: #333;
+    margin-top: 20px;
+}
+
+table {
+    width: 80%;
+    margin: 20px auto;
+    border-collapse: collapse;
+}
+
+table, th, td {
+    border: 1px solid #ddd;
+}
+
+th, td {
+    padding: 12px;
+    text-align: left;
+}
+
+th {
+    background-color: #f2f2f2;
+    color: #333;
+}
+
+tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+tr:hover {
+    background-color: #f1f1f1;
+}
+
+td {
+    color: #555;
+}
+
+
+
+
+
+/* LE STYLE POUR LA NOTE */
+
+
+header {
+    background-color: #c32f2f;
+    color: white;
+    padding: 7px 0;
+    text-align: center;
+}
+
+main {
+    margin: 20px;
+    padding: 20px;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+
+
+
+
+.welcome-message {
+    background-color: #f8f9fa;
+    border: 1px solid #dee2e6;
+    border-radius: 5px;
+    padding: 10px 20px;
+    margin-bottom: 20px;
+    font-size: 1.2rem;
+    color: #333;
+    text-align: center;
+}
+
+
+.new-notification {
+    color: red;
+}
+
+
+
+
+
+/* TEST SUR UNE PIED DE PAGE */
+
+/*
+
+.navbar-brand img {
+    max-height: 40px;
+}
+
+
+
+.footer a {
+    color: #adb5bd;
+}
+
+.footer a:hover {
+    color: white;
+}
+
+.container {
+    margin-top: 20px;
+}

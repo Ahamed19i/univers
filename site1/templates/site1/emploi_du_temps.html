@@ -1,0 +1,98 @@
+
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Emploi du Temps{% endblock %}
+
+{% block extra_head %}
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f0f0f0;
+        margin: 0;
+        padding: 0;
+    }
+    header {
+        background-color: #c32f2f;
+        color: white;
+        padding: 10px 0;
+        text-align: center;
+    }
+    main {
+        margin: 20px;
+        padding: 20px;
+        background-color: white;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    .schedule-table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+    .schedule-table th, .schedule-table td {
+        border: 1px solid #ddd;
+        padding: 8px;
+        text-align: left;
+    }
+    .schedule-table th {
+        background-color: #333;
+        color: white;
+        cursor: pointer;
+    }
+    .schedule-table th.sortable::after {
+        content: " \25B2"; /* Up arrow */
+    }
+    .schedule-table th.sortable.ascending::after {
+        content: " \25BC"; /* Down arrow */
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<main>
+    <header class="my-4">
+        <h2 class="text-center">Emploi du temps</h2>
+    </header>
+    <label for="filterSelect">Filtrer par jour ou professeur:</label>
+    <select id="filterSelect">
+        <option value="all">Tous</option>
+        <option value="lundi">Lundi</option>
+        <option value="mardi">Mardi</option>
+        <option value="mercredi">Mercredi</option>
+        <option value="jeudi">Jeudi</option>
+        <option value="vendredi">Vendredi</option>
+        <option value="samedi">Samedi</option>
+        <option value="dimanche">Dimanche</option>
+    </select>
+
+    <table class="schedule-table">
+        <thead>
+            <tr>
+                <th class="sortable">Jour</th>
+                <th>Cours</th>
+                <th class="sortable">Professeur</th>
+                <th>Salle</th>
+                <th class="sortable">Heure de Début</th>
+                <th class="sortable">Heure de Fin</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for emploi in emploi_du_temps_list %}
+            <tr>
+                <td>{{ emploi.jour }}</td>
+                <td>{{ emploi.cours.nom_cours }}</td>
+                <td>{{ emploi.professeur.nom }}</td>
+                <td>{{ emploi.salle.nom_salle }}</td>
+                <td>{{ emploi.heure_debut }}</td>
+                <td>{{ emploi.heure_fin }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <a href="{% url 'generate_pdf' %}" class="btn btn-primary">Télécharger en PDF</a>
+</main>
+{% endblock %}
+
+{% block extra_js %}
+<script src="{% static 'js/scripts_emploi.js' %}"></script>
+{% endblock %}

@@ -1,0 +1,67 @@
+
+
+
+
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Modifier un Cours{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <header class="my-4">
+        <h2 class="text-center">Modifier un Cours</h2>
+    </header>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-primary">Modifier</button>
+    </form>
+</div>
+
+
+
+<style>
+    body {
+        font-family: 'Arial', sans-serif;
+        background-color: #f8f9fa;
+    }
+
+    .card {
+        border: none;
+        border-radius: 10px;
+        transition: transform 0.2s ease-in-out, box-shadow 0.2s;
+    }
+
+    .card:hover {
+        transform: scale(1.02);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+    }
+
+    .btn-primary {
+        background: linear-gradient(to right, #0069d9, #4dabf7);
+        border: none;
+        transition: background 0.3s ease-in-out;
+    }
+
+    .btn-primary:hover {
+        background: linear-gradient(to right, #0056b3, #2196f3);
+    }
+</style>
+
+
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const card = document.querySelector('.card');
+        card.addEventListener('mouseover', function () {
+            card.classList.add('shadow-lg');
+        });
+
+        card.addEventListener('mouseout', function () {
+            card.classList.remove('shadow-lg');
+        });
+    });
+</script>
+
+{% endblock %}

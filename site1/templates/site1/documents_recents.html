@@ -1,0 +1,17 @@
+
+
+
+{% extends 'base.html' %}
+
+{% block title %}Documents Récents{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <h2 class="text-center">Documents Récents</h2>
+    <ul>
+        {% for document in documents %}
+        <li>{{ document.document_type }} - <a href="{{ document.fichier.url }}" download>Télécharger</a> (Ajouté le {{ document.date_ajout }})</li>
+        {% endfor %}
+    </ul>
+</div>
+{% endblock %}

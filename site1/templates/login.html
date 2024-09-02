@@ -1,0 +1,35 @@
+
+
+
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Connexion{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/login.css' %}">
+    {% block extra_head %}{% endblock %}
+</head>
+<body>
+    <div class="login-container">
+        <div class="login-box">
+            <div class="card">
+                <div class="card-header text-center">
+                    <h3>Connexion</h3>
+                </div>
+                <div class="card-body">
+                    {% load static %}
+                    <form method="post" action="{% url 'login' %}">
+                        {% csrf_token %}
+                        {{ form.as_p }}
+                        <button type="submit" class="btn btn-primary btn-block">Connexion</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

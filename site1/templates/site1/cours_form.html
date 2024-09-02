@@ -1,0 +1,111 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}{{ form.instance.pk|yesno:"Modifier un cours,Ajouter un cours" }}{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <h2 class="text-center my-4">{{ form.instance.pk|yesno:"Modifier un cours,Ajouter un cours" }}</h2>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="form-group">
+            {{ form.as_p }}
+        </div>
+        <button type="submit" class="btn btn-success">Enregistrer</button>
+        <a href="{% url 'cours_list' %}" class="btn btn-secondary">Annuler</a>
+    </form>
+</div>
+{% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{% comment %}
+    
+
+{% extends 'base.html' %}
+{% block title %}Ajouter / Modifier Cours{% endblock %}
+
+{% block content %}
+<main class="container">
+    <header class="my-4">
+        <h1 class="text-center">{% if form.instance.pk %}Modifier{% else %}Ajouter{% endif %} un cours</h1>
+    </header>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="form-group">
+            {{ form.nom_cours.label_tag }}
+            {{ form.nom_cours }}
+        </div>
+        <div class="form-group">
+            {{ form.description.label_tag }}
+            {{ form.description }}
+        </div>
+        <div class="form-group">
+            {{ form.credits.label_tag }}
+            {{ form.credits }}
+        </div>
+        <div class="form-group">
+            {{ form.coefficient.label_tag }}
+            {{ form.coefficient }}
+        </div>
+        <div class="form-group">
+            {{ form.filieres.label_tag }}
+            {{ form.filieres }}
+        </div>
+        <div class="form-group">
+            {{ form.fichier_pdf.label_tag }}
+            {{ form.fichier_pdf }}
+        </div>
+        <button type="submit" class="btn btn-primary">Enregistrer</button>
+    </form>
+</main>
+{% endblock %}
+
+
+{% endcomment %}

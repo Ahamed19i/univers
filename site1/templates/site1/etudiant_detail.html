@@ -1,0 +1,44 @@
+
+
+
+
+
+{% extends 'base.html' %}
+
+{% block title %}Détails du professeur{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <header class="my-4">
+        <h2 class="text-center">Details de l'étudiant {{etudiant.prenom}} {{etudiant.nom}}</h2>
+    </header>
+    <table class="table table-bordered">
+        <tr>
+            <th>Nom</th>
+            <td>{{ etudiant.nom }}</td>
+        </tr>
+        <tr>
+            <th>Prénom</th>
+            <td>{{ etudiant.prenom }}</td>
+        </tr> 
+        <tr>
+            <th>Email</th>
+            <td>{{ etudiant.email }}</td>
+        </tr>
+        <tr>
+            <th>Département</th>
+            <td>{{ etudiant.departement.nom_departement }}</td>
+        </tr>
+        <tr>
+            <th>Filliere</th>
+            <td>{{ etudiant.filiere.nom_filiere }}</td>
+        </tr> 
+        <tr>
+            <th>Niveau</th>
+            <td>{{ etudiant.niveau }}</td>
+        </tr>
+    </table>
+    </form>
+    <a href="{% url 'etudiant_list' %}" class="btn btn-primary">Retour à la liste</a>
+</div>
+{% endblock %}

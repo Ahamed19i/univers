@@ -1,0 +1,28 @@
+
+
+{% extends 'base.html' %}
+
+{% block content %}
+
+    <div class="container mt-5">
+        <header class="my-4">
+            <h2 class="text-center">Mes notifications</h2>
+        </header>
+        <ul>
+            {% for notification in notifications %}
+                <li class="{% if not notification.is_read %}new-notification{% endif %}">
+                    {% if not notification.is_read %}
+                        <strong>{{ notification.message }}</strong>
+                    {% else %}
+                        {{ notification.message }}
+                    {% endif %}
+                    <span class="timestamp">{{ notification.timestamp }}</span>
+                </li>
+            {% empty %}
+                <li>Vous n'avez aucune notification.</li>
+            {% endfor %}
+        </ul>
+    </div>
+       
+{% endblock %}
+

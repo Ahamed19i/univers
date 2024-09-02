@@ -1,0 +1,34 @@
+
+
+
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Ajouter une Absence{% endblock %}
+
+{% block extra_head %}
+<style>
+    .form-container {
+        margin-top: 20px;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<main>
+    <header class="my-4">
+        <h2 class="text-center">Ajouter une Absence</h2>
+    </header>
+    <div class="form-container">
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" class="btn btn-primary">Ajouter</button>
+        </form>
+    </div>
+</main>
+{% endblock %}
+
+{% block extra_js %}
+<script src="{% static 'js/scripts_absences.js' %}"></script>
+{% endblock %}

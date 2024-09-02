@@ -1,0 +1,86 @@
+
+
+
+
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="container mt-5">
+    <header class="my-4">
+        <h2 class="text-center">Justifier mon absence</h2>
+    </header>
+    <form method="post">
+        {% csrf_token %}
+        <div class="form-group">
+            <label for="motif"><strong> Motif de la justification :</strong></label>
+            <textarea id="motif" name="motif" class="form-control" rows="4" required></textarea>
+        </div>
+        <button type="submit" class="btn btn-warning">Envoyer la justification</button>
+        <button type="submit" class="btn btn-warning"><a href="{% url 'absences_etudiant' %}">Retour aux absences</a></button>
+    </form>
+    
+</div>
+{% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{% comment %}
+  
+
+  
+ 
+{% extends "base.html" %}
+{% block content %}
+  <h2>Justification d'Absence</h2>
+  <form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Soumettre</button>
+  </form>
+  <a href="{% url 'absences_etudiant' %}">Retour aux absences</a>
+{% endblock %}
+
+
+
+
+
+{% endcomment %}
+
+
+
+
+
+
+
+{% comment %}
+  
+
+  
+
+{% extends "base.html" %}
+
+{% block content %}
+  <h1>Justifier l'absence</h1>
+  <form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Soumettre</button>
+  </form>
+  <a href="{% url 'absences_etudiant' %}">Retour aux absences</a>
+{% endblock %}
+{% endcomment %}

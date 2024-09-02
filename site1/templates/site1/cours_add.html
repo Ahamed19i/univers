@@ -1,0 +1,21 @@
+
+
+
+
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Ajouter un Cours{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <header class="my-4">
+        <h2 class="text-center">Ajouter un Cours</h2>
+    </header>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-primary">Ajouter</button>
+    </form>
+</div>
+{% endblock %}

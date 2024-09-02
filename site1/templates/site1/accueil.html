@@ -1,0 +1,110 @@
+
+
+
+
+{% extends 'base.html' %}
+{% block title %}Accueil - université{% endblock %}
+
+{% block extra_head %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/accueil.css' %}">
+<script src="{% static 'js/accueil.js' %}"></script>
+{% endblock %}
+
+{% block content %}
+<main class="container">
+    <div class="row">
+        <!-- Section Photos -->
+        <div class="col-md-6 mb-4">
+            <div class="card h-100">
+                <div id="carouselPhotos" class="carousel slide" data-ride="carousel">
+                    <div class="carousel-inner">
+                        {% for photo in photos %}
+                        <div class="carousel-item {% if forloop.first %}active{% endif %}">
+                            <img src="{{ photo.image.url }}" class="d-block w-100" alt="{{ photo.titre }}">
+                            <div class="carousel-caption d-none d-md-block">
+                                <h5>{{ photo.titre }}</h5>
+                                <p>{{ photo.description }}</p>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                    <a class="carousel-control-prev" href="#carouselPhotos" role="button" data-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="carousel-control-next" href="#carouselPhotos" role="button" data-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section Notes Importantes -->
+        <div class="col-md-6 mb-4">           
+            <div class="card h-100">
+                <div class="card-body">
+                    <h3 class="card-title">Note Importante</h3>
+                    <div class="marquee">
+                        <div class="marquee-content">
+                            {% for note in notes_importantes %}
+                            <p><strong>{{ note.titre }}</strong>: {{ note.contenu }}</p>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <!-- Section Top Absences -->
+        <div class="col-md-6 mb-4">
+            <div class="card h-100">
+                <div class="card-body">
+                    <h3 class="card-title">Top Absences</h3>
+                    <ul>
+                        {% for absence in absences %}
+                        <li>{{ absence.cours.nom_cours }} - {{ absence.date }}
+                            {% if absence.justifiee %}
+                                (Justifiée)
+                            {% else %}
+                                (Non justifiée)
+                            {% endif %}
+                        </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section Documents Récents -->
+        <div class="col-md-6 mb-4">
+            <div class="card h-100">
+                <div class="card-body">
+                    <h3 class="card-title">Documents Récents</h3>
+                    <ul>
+                        {% for document in documents_recents %}
+                        <li>{{ document.document_type }} - <a href="{{ document.fichier.url }}">Télécharger</a></li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+{% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+
+

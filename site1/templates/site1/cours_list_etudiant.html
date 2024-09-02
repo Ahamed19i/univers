@@ -1,0 +1,44 @@
+
+
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Liste des Cours{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <header class="my-4">
+        <h2 class="text-center">Liste des Cours</h2>
+    </header>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Nom du Cours</th>
+                <th>Description</th>
+                <th>Crédits</th>
+                <th>Coefficient</th>
+                <th>Filiere</th>
+                <th>Fichiers</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for cours in cours %}
+            <tr>
+                <td>{{ cours.nom_cours }}</td>
+                <td>{{ cours.description }}</td>
+                <td>{{ cours.credits }}</td>
+                <td>{{ cours.coefficient }}</td>
+                <td>{{ cours.filieres }}</td>
+                <td>
+                    {% if cours.fichier_pdf %}
+                        <a href="{% url 'cours_download' cours.pk %}" class="btn btn-info btn-sm">Télécharger</a>
+                    {% else %}
+                        Pas de fichier
+                    {% endif %}
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

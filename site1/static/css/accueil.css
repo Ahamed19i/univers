@@ -1,0 +1,215 @@
+
+
+
+
+
+.marquee {
+    height: 200px; /* ajustez la hauteur en fonction de vos besoins */
+    overflow: hidden;
+    position: relative;
+}
+
+.marquee-content {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    animation: scroll-up 7s linear infinite;
+}
+
+@keyframes scroll-up {
+    0% {
+        transform: translateY(100%);
+    }
+    100% {
+        transform: translateY(-100%);
+    }
+}
+
+
+
+
+
+
+
+
+
+.marquee {
+    overflow: hidden;
+    position: relative;
+    height: 100%;
+}
+
+.marquee-content {
+    display: inline-block;
+    white-space: nowrap;
+    animation: marquee 7s linear infinite;
+}
+
+@keyframes marquee {
+    0% {
+        transform: translateY(100%);
+    }
+    100% {
+        transform: translateY(-100%);
+    }
+}
+
+
+
+li:hover {
+    color: #dc3545;
+}
+
+h3.card-title {
+    color: #dc3545;
+    font-weight: bold;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Styles for the homepage 
+.carousel-inner img {
+    height: 400px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.carousel-caption {
+    background: rgba(0, 0, 0, 0.5);
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.card {
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
+
+.marquee {
+    overflow: hidden;
+    position: relative;
+    white-space: nowrap;
+}
+
+.marquee-content {
+    display: inline-block;
+    animation: marquee 15s linear infinite;
+}
+
+@keyframes marquee {
+    from {
+        transform: translate(100%, 0);
+    }
+    to {
+        transform: translate(-100%, 0);
+    }
+}
+
+h2.card-title {
+    color: #dc3545;
+    font-weight: bold;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+li {
+    padding: 5px 0;
+    border-bottom: 1px solid #ddd;
+    transition: color 0.3s ease;
+}
+
+li:hover {
+    color: #dc3545;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
+
+
+
+
+
+.carousel-item img {
+    max-height: 500px;  /* Augmenter la taille des photos 
+    object-fit: cover;
+}
+
+.marquee {
+    height: 200px;
+    overflow: hidden;
+    position: relative;
+}
+
+.marquee-content {
+    display: flex;
+    flex-direction: column;
+    animation: marquee 10s linear infinite;
+}
+
+.marquee p {
+    margin: 0;
+    line-height: 2em;
+    text-align: center;
+}
+
+@keyframes marquee {
+    0% { transform: translateY(100%); }
+    100% { transform: translateY(-100%); }
+}
+
+.card {
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.card-body {
+    padding: 20px;
+}
+
+.card-title {
+    margin-bottom: 20px;
+}
+
+.sr-only {
+    color: rgb(240, 11, 11);
+}

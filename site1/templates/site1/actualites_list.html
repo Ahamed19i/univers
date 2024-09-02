@@ -1,0 +1,41 @@
+
+
+
+{% extends 'base.html' %}
+{% block title %}Actualités de l'Université{% endblock %}
+
+{% block extra_head %}
+<script src="{% static 'js/actualites.js' %}"></script>
+{% endblock %}
+
+{% block content %}
+<header class="my-4">
+    <h1 class="text-center">Actualités de l'Université</h1>
+</header>
+<main class="container">
+    {% if user.is_authenticated and user.is_staff %}
+        <a href="{% url 'actualite_add' %}" class="btn btn-primary mb-4">Ajouter une actualité</a>
+    {% endif %}
+    <div class="row">
+        {% for actualite in actualites %}
+        <div class="col-md-4 mb-4">
+            <div class="card h-100">
+                <img src="{{ actualite.image.url }}" class="card-img-top" alt="{{ actualite.titre }}">
+                <div class="card-body">
+                    <h5 class="card-title">{{ actualite.titre }}</h5>
+                    <p class="card-text">{{ actualite.description|truncatewords:20 }}</p>
+                    <a href="{% url 'actualite_detail' actualite.pk %}" class="btn btn-primary">Lire plus</a>
+                    {% if user.is_authenticated and user.is_staff %}
+                        <a href="{% url 'actualite_edit' actualite.pk %}" class="btn btn-secondary">Modifier</a>
+                        <form action="{% url 'actualite_delete' actualite.pk %}" method="post" style="display:inline;">
+                            {% csrf_token %}
+                            <button type="submit" class="btn btn-danger">Supprimer</button>
+                        </form>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</main>
+{% endblock %}

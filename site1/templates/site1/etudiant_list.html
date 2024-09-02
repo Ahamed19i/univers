@@ -1,0 +1,51 @@
+
+
+
+
+{% extends 'base.html' %}
+
+{% block title %}Liste des etudiant{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <header class="my-4">
+        <h2 class="text-center">Liste des étudiants</h2>
+    </header>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Nom</th>
+                <th>Prénom</th>
+                <th>Date de naissance</th>
+                <th>Email</th>
+                <th>Téléphone</th>  <!-- Add the field to the table -->  <!-- Add the field to the table -->  <!-- Add the field to the table -->  <!-- Add the field to the table -->  <!-- Add the field to the table -->  <!-- Add the field to the table -->  <!-- Add the field to the table -->  <!-- Add the field to the table -->  <!-- Add the field to the table -->  <!-- Add the field to the table -->
+                <th>Département</th>
+                <th>filliere</th>
+                <th>Niveau </th> 
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for etudiant in etudiants %}
+            <tr>
+                <td>{{ etudiant.nom }}</td>
+                <td>{{ etudiant.prenom }}</td>
+                <td>{{ etudiant.date_naissance }}</td>
+                <td>{{ etudiant.email }}</td>
+                <td>{{ etudiant.telephone }}</td>
+                <td>{{ etudiant.departement.nom_departement }}</td>
+                <td>{{ etudiant.filiere }}</td>
+                <td>{{ etudiant.niveau }}</td>  <!-- Add the field to the table -->  <!-- Add the field to the table -->  <!-- Add the field to the table -->  <!-- Add the field to the table -->  <!-- Add the field to the table -->  <!-- Add the field to the table -->  <!-- Add the field to the table -->  <!-- Add the field to the table -->  <!-- Add the field to the table --> 
+                <td>
+                    <a href="{% url 'etudiant_detail' etudiant.pk %}" class="btn btn-info btn-sm">Voir</a>
+                </td>
+            </tr>
+            {% empty %}
+            <tr>
+                <td colspan="6">Aucun etudiant trouvé.</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

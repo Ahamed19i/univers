@@ -1,0 +1,34 @@
+
+
+
+{% extends 'base.html' %}
+
+{% block title %}Traiter Réclamation{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <h2 class="text-center">Traiter Réclamation</h2>
+    <div class="card">
+        <div class="card-body">
+            <h5 class="card-title">Réclamation de {{ reclamation.etudiant.prenom }} {{ reclamation.etudiant.nom }}</h5>
+            <p class="card-text"><strong>Cours :</strong> {{ reclamation.note.cours.nom_cours }}</p>
+            <p class="card-text"><strong>Motif :</strong> {{ reclamation.motif }}</p>
+            <p class="card-text"><strong>Date :</strong> {{ reclamation.date }}</p>
+
+            <form method="post">
+                {% csrf_token %}
+                <div class="form-group">
+                    <label for="statut">Statut</label>
+                    <select class="form-control" id="statut" name="statut">
+                        <option value="En cours" {% if reclamation.statut == 'En cours' %}selected{% endif %}>En cours</option>
+                        <option value="Traitée" {% if reclamation.statut == 'Traitée' %}selected{% endif %}>Traitée</option>
+                    </select>
+                </div>
+                <a href="{% url 'notes_professeur' %}" class="btn btn-secondary">Retour</a>
+                <button type="submit" class="btn btn-primary">Enregistrer</button>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}
+

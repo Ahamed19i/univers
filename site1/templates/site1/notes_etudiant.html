@@ -1,0 +1,147 @@
+
+
+
+{% extends 'base.html' %}
+
+{% block title %}Mes Notes{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <header class="my-4">
+        <h2 class="text-center">Mes notes</h2>
+    </header>
+    <table class="table table-hover table-bordered">
+        <thead class="thead-dark">
+            <tr>
+                <th>Cours</th>
+                <th>Note</th>
+                <th>Date</th>
+                <th>Réclamation</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for note in notes %}
+            <tr>
+                <td>{{ note.cours.nom_cours }}</td>
+                <td>{{ note.note }}</td>
+                <td>{{ note.date }}</td>
+                <td>
+                    {% if note.reclamations.all %}
+                        {% for reclamation in note.reclamations.all %}
+                            <div>
+                                <strong>Statut :</strong> <span class="badge badge-warning">{{ reclamation.statut }}</span>
+                            </div>
+                        {% endfor %}
+                    {% else %}
+                        <span class="badge badge-secondary">Aucune réclamation</span>
+                    
+                    {% endif %}
+                </td>
+                <td>
+                    <!-- Button to make a new claim if none exists -->
+                    {% if not note.reclamations.all %}
+                        <a href="{% url 'note_reclamation' note.id %}" class="btn btn-warning btn-sm">Faire une réclamation</a>
+                    {% endif %}
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}
+
+
+
+
+
+
+
+
+
+{% comment %}
+    
+
+    
+{% extends 'base.html' %}
+
+{% block title %}Mes Notes{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <h2 class="text-center">Mes Notes</h2>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Cours</th>
+                <th>Note</th>
+                <th>Date</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for note in notes %}
+            <tr>
+                <td>{{ note.cours.nom_cours }}</td>
+                <td>{{ note.note }}</td>
+                <td>{{ note.date }}</td>
+                <td>
+                    <a href="{% url 'note_reclamation' note.id %}" class="btn btn-warning btn-sm">Réclamer</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}
+
+
+
+
+
+{% endcomment %}
+
+
+
+
+
+
+
+{% comment %}
+       
+
+{% extends 'base.html' %}
+
+{% block title %}Mes Notes{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <h2 class="text-center">Mes Notes</h2>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Etudiant</th>
+                <th>Cours</th>
+                <th>Note</th>
+                <th>Date de réclamation</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for note in notes %}
+            <tr>
+                <td>{{ note.etudiant.prenom }} {{note.etudiant.nom}} </td>
+                <td>{{ note.cours.nom_cours }}</td>
+                <td>{{ note.note }}</td>
+                <td>{{ note.date }}</td>
+                <td>
+                    <a href="{% url 'note_reclamation' note.id %}" class="btn btn-warning btn-sm">Réclamer</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}
+
+{% endcomment %}

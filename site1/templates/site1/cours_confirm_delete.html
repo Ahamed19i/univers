@@ -1,0 +1,67 @@
+
+
+
+
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Supprimer un Cours{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <header class="my-4">
+        <h2 class="text-center">Supprimer un Cours</h2>
+    </header>
+    <p>Êtes-vous sûr de vouloir supprimer le cours "{{ cours.nom_cours }}" ?</p>
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-danger">Supprimer</button>
+        <a href="{% url 'cours_list' %}" class="btn btn-secondary">Annuler</a>
+    </form>
+</div>
+{% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{% comment %}
+      
+
+{% extends 'base.html' %}
+{% block title %}Supprimer Cours{% endblock %}
+
+{% block content %}
+<main class="container">
+    <header class="my-4">
+        <h1 class="text-center">Supprimer Cours</h1>
+    </header>
+    <p>Êtes-vous sûr de vouloir supprimer le cours "{{ cours.nom_cours }}" ?</p>
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-danger">Supprimer</button>
+        <a href="{% url 'cours_list' %}" class="btn btn-secondary">Annuler</a>
+    </form>
+</main>
+{% endblock %}
+
+{% endcomment %}

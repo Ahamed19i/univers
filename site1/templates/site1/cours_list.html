@@ -1,0 +1,129 @@
+
+
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Liste des Cours{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <header class="my-4">
+        <h2 class="text-center">Liste des Cours</h2>
+    </header>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Nom du Cours</th>
+                <th>Description</th>
+                <th>Crédits</th>
+                <th>Coefficient</th>
+                <th>Filiere</th>
+                <th>Fichiers</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for cours in cours %}
+            <tr>
+                <td>{{ cours.nom_cours }}</td>
+                <td>{{ cours.description }}</td>
+                <td>{{ cours.credits }}</td>
+                <td>{{ cours.coefficient }}</td>
+                <td>{{ cours.filieres }}</td>
+                <td>
+                    {% if cours.fichier_pdf %}
+                        <a href="{% url 'cours_download' cours.pk %}" class="btn btn-info btn-sm">Télécharger</a>
+                    {% else %}
+                        Pas de fichier
+                    {% endif %}
+                </td>
+                <td>
+                    <a href="{% url 'cours_edit' cours.pk %}" class="btn btn-warning btn-sm">Modifier</a>
+                    <form action="{% url 'cours_delete' cours.pk %}" method="post" style="display:inline;">
+                        {% csrf_token %}
+                        <button type="submit" class="btn btn-danger btn-sm">Supprimer</button>
+                    </form>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table> 
+    <a href="{% url 'cours_add' %}" class="btn btn-primary mt-3">Ajouter un cours</a> 
+</div>
+{% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{% comment %}
+    
+
+{% extends 'base.html' %}
+
+{% block title %}Liste des Cours{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Nom du Cours</th>
+                <th>Description</th>
+                <th>Crédits</th>
+                <th>Coefficient</th>
+                <th>Filliere</th>
+                <th>Fichiers</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <header class="my-4">
+                <h2 class="text-center">Liste des Cours</h2>
+            </header>
+            {% for cours in cours %}
+            <tr>
+                <td>{{ cours.nom_cours }}</td>
+                <td>{{ cours.description }}</td>
+                <td>{{ cours.credits }}</td>
+                <td>{{ cours.coefficient }}</td>
+                <td>{{ cours.filieres}}</td>
+
+                <td>
+                    <a href="{{ cours.fichier.url }}" class="btn btn-info btn-sm">Télécharger</a>
+                </td>
+                <td>
+                    <a href="{% url 'cours_detail' cours.pk %}" class="btn btn-primary btn-sm">Détails</a>
+                </td>
+                <td>
+                    <a href="{% url 'cours_edit' cours.pk %}" class="btn btn-warning btn-sm">Modifier</a>
+                </td>
+
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}
+
+
+{% endcomment %}
+

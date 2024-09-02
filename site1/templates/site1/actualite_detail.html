@@ -1,0 +1,18 @@
+
+
+
+{% extends 'base.html' %}
+{% block title %}{{ actualite.titre }}{% endblock %}
+
+{% block content %}
+<main class="container">
+    <header class="my-4">
+        <h1 class="text-center">{{ actualite.titre }}</h1>
+    </header>
+    <div class="text-center">
+        <img src="{{ actualite.image.url }}" class="img-fluid mb-4" alt="{{ actualite.titre }}">
+    </div>
+    <p>{{ actualite.description }}</p>
+    <a href="{% url 'actualites_list' %}" class="btn btn-secondary">Retour aux actualités</a>
+</main>
+{% endblock %}
